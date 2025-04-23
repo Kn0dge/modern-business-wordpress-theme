@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once get_template_directory() . '/inc/customizer/callbacks.php';
 require_once get_template_directory() . '/inc/customizer/css-output/typography.php';
-require_once get_template_directory() . '/inc/customizer/react-admin-enqueue.php';
 require_once get_template_directory() . '/inc/customizer/rest-api.php';
 require_once get_template_directory() . '/inc/customizer/register-sections-panel.php';
 
