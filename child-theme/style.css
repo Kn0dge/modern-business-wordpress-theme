@@ -1,0 +1,15 @@
+/*
+ Theme Name: Modern Business Child
+ Theme URI: http://example.com/modern-business-child
+ Description: Child theme for the Modern Business WordPress theme
+ Author: Your Name
+ Author URI: http://example.com
+ Template: Modern-Business-Beta
+ Version: 1.0.0
+ Text Domain: modern-business-child
+*/
+
+/* Import parent theme styles */
+@import url("../Modern-Business-Beta/style.css");
+
+/* Add your custom styles below */
