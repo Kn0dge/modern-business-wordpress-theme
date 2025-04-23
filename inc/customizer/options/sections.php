@@ -8,7 +8,7 @@
  */
 
 /**
- * Modern Business Customizer Settings: Sections with enable/disable toggles and comprehensive styling options
+ * Modern Business Customizer Settings: Sections with options from previous version merged
  *
  * @package Modern_Business
  */
@@ -25,183 +25,241 @@ $options = [
 		'options'  => [
 			// Hero Section
 			'modern_business_hero_section' => [
-				'type'        => 'section',
+				'type'        => 'panel',
 				'title'       => __( 'Hero Section', 'modern-business' ),
 				'priority'    => 10,
 				'panel'       => 'modern_business_sections_panel',
 				'options'     => [
-					'enable_hero_section' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Hero Section', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 1,
-					],
-					'enable_hero_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_background_color', true) && get_theme_mod('enable_hero_section', true);
-					//	},
-					],
-					'hero_background_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#f3f4f6',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_background_color', true) && get_theme_mod('enable_hero_section', true);
-					//	},
-					],
-					'enable_hero_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_section', true);
-					//	},
-					],
-					'hero_text_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_text_color', true) && get_theme_mod('enable_hero_section', true);
-					//	},
-					],
-					'enable_hero_title_font_size' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Title Font Size', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 25,
-					],
-					'hero_title_font_size' => [
-						'type'              => 'text',
-						'label'             => __( 'Title Font Size', 'modern-business' ),
-						'default'           => '3.5rem',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 30,
-						'description'       => __( 'Use CSS units, e.g., 3.5rem, 56px', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_title_font_size', true);
-					//	},
-					],
-					'enable_hero_subtitle_font_size' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Subtitle Font Size', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 35,
-					],
-					'hero_subtitle_font_size' => [
-						'type'              => 'text',
-						'label'             => __( 'Subtitle Font Size', 'modern-business' ),
-						'default'           => '1.25rem',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 40,
-						'description'       => __( 'Use CSS units, e.g., 1.25rem, 20px', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_subtitle_font_size', true);
-					//	},
-					],
-					'enable_hero_font_family' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Font Family', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 45,
-					],
-					'hero_font_family' => [
-						'type'              => 'select',
-						'label'             => __( 'Font Family', 'modern-business' ),
-						'default'           => 'system-ui, sans-serif',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 50,
-						'description'       => __( 'Select font family', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_font_family', true);
-					//	},
-						'choices'           => [
-							'system-ui, sans-serif' => 'System UI',
-							'Arial, sans-serif' => 'Arial',
-							'Georgia, serif' => 'Georgia',
-							'"Helvetica Neue", sans-serif' => 'Helvetica Neue',
-							'"Times New Roman", serif' => 'Times New Roman',
-							'"Courier New", monospace' => 'Courier New',
-							'"Lucida Console", monospace' => 'Lucida Console',
+					'modern_business_hero_section_options' => [
+						'type'        => 'section',
+						'title'       => __( 'Hero Section Options', 'modern-business' ),
+						'priority'    => 10,
+						'options'     => [
+							'enable_hero_section' => [
+								'type'              => 'checkbox',
+								'control_type'      => 'checkbox',
+								'label'             => __( 'Enable Hero Section', 'modern-business' ),
+								'default'           => true,
+								'sanitize_callback' => 'sanitize_checkbox',
+								'priority'          => 1,
+							],
+							'hero_title' => [
+								'type'              => 'text',
+								'label'             => __( 'Hero Title', 'modern-business' ),
+								'default'           => __('We Create Modern & Professional Websites', 'modern-business'),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 5,
+							],
+							'hero_subtitle' => [
+								'type'              => 'textarea',
+								'label'             => __( 'Hero Subtitle', 'modern-business' ),
+								'default'           => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.', 'modern-business'),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 10,
+							],
+							'hero_background_color' => [
+								'type'              => 'color',
+								'control_type'      => 'color',
+								'label'             => __( 'Background Color', 'modern-business' ),
+								'default'           => '#ffffff',
+								'sanitize_callback' => 'sanitize_hex_color',
+								'priority'          => 15,
+								'active_callback'   => 'modern_business_is_hero_background_color_enabled',
+							],
+							'hero_background' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Hero Background Image', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 45,
+								'active_callback'   => 'modern_business_is_hero_background_color_enabled',
+							],
+							'hero_text_color' => [
+								'type'              => 'color',
+								'control_type'      => 'color',
+								'label'             => __( 'Text Color', 'modern-business' ),
+								'default'           => '#000000',
+								'sanitize_callback' => 'sanitize_hex_color',
+								'priority'          => 20,
+							],
+							'hero_text_align' => [
+								'type'              => 'select',
+								'control_type'      => 'select',
+								'label'             => __( 'Text Alignment', 'modern-business' ),
+								'default'           => 'center',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 25,
+								'choices'           => [
+									'left'   => __('Left', 'modern-business'),
+									'center' => __('Center', 'modern-business'),
+									'right'  => __('Right', 'modern-business'),
+								],
+							],
+							'hero_padding_top' => [
+								'type'              => 'text',
+								'label'             => __( 'Padding Top', 'modern-business' ),
+								'default'           => '50px',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 30,
+							],
+							'hero_padding_bottom' => [
+								'type'              => 'text',
+								'label'             => __( 'Padding Bottom', 'modern-business' ),
+								'default'           => '50px',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 35,
+							],
+							'hero_font_size' => [
+								'type'              => 'number',
+								'label'             => __( 'Font Size (px)', 'modern-business' ),
+								'default'           => 18,
+								'sanitize_callback' => 'absint',
+								'priority'          => 40,
+								'input_attrs'       => [
+									'min' => 10,
+									'max' => 50,
+								],
+							],
+							'hero_primary_btn_text' => [
+								'type'              => 'text',
+								'label'             => __( 'Primary Button Text', 'modern-business' ),
+								'default'           => __('Get Started', 'modern-business'),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 50,
+							],
+							'hero_primary_btn_url' => [
+								'type'              => 'url',
+								'label'             => __( 'Primary Button URL', 'modern-business' ),
+								'default'           => '#',
+								'sanitize_callback' => 'esc_url_raw',
+								'priority'          => 55,
+							],
+							'hero_secondary_btn_text' => [
+								'type'              => 'text',
+								'label'             => __( 'Secondary Button Text', 'modern-business' ),
+								'default'           => __('Learn More', 'modern-business'),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 60,
+							],
+							'hero_secondary_btn_url' => [
+								'type'              => 'url',
+								'label'             => __( 'Secondary Button URL', 'modern-business' ),
+								'default'           => '#',
+								'sanitize_callback' => 'esc_url_raw',
+								'priority'          => 65,
+							],
 						],
 					],
-					'enable_hero_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_section', true);
-					//	},
+					'modern_business_hero_slider_section' => [
+						'type'        => 'section',
+						'title'       => __( 'Hero Slider Settings', 'modern-business' ),
+						'priority'    => 20,
+						'active_callback' => 'modern_business_is_hero_section_enabled',
+						'options'     => [
+							'enable_hero_slider' => [
+								'type'              => 'checkbox',
+								'control_type'      => 'checkbox',
+								'label'             => __( 'Enable Hero Slider', 'modern-business' ),
+								'default'           => false,
+								'sanitize_callback' => 'sanitize_checkbox',
+								'priority'          => 1,
+							],
+							'hero_slider_transition' => [
+								'type'              => 'select',
+								'control_type'      => 'select',
+								'label'             => __( 'Transition Effect', 'modern-business' ),
+								'default'           => 'fade',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 5,
+								'choices'           => [
+									'fade'  => __( 'Fade', 'modern-business' ),
+									'slide' => __( 'Slide', 'modern-business' ),
+									'zoom'  => __( 'Zoom', 'modern-business' ),
+									'flip'  => __( 'Flip', 'modern-business' ),
+								],
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_random_transitions' => [
+								'type'              => 'checkbox',
+								'control_type'      => 'checkbox',
+								'label'             => __( 'Use Random Transitions', 'modern-business' ),
+								'default'           => false,
+								'sanitize_callback' => 'sanitize_checkbox',
+								'priority'          => 10,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_image_1' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Slider Image 1', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 15,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_image_2' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Slider Image 2', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 20,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_image_3' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Slider Image 3', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 25,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_image_4' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Slider Image 4', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 30,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_image_5' => [
+								'type'              => 'image',
+								'control_type'      => 'image',
+								'label'             => __( 'Slider Image 5', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'modern_business_sanitize_image',
+								'priority'          => 35,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_overlay' => [
+								'type'              => 'select',
+								'control_type'      => 'select',
+								'label'             => __( 'Slider Overlay', 'modern-business' ),
+								'default'           => 'none',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 40,
+								'choices'           => [
+									'none'   => __( 'None', 'modern-business' ),
+									'light'  => __( 'Light', 'modern-business' ),
+									'dark'   => __( 'Dark', 'modern-business' ),
+									'custom' => __( 'Custom Color', 'modern-business' ),
+								],
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+							'hero_slider_overlay_color' => [
+								'type'              => 'color',
+								'control_type'      => 'color',
+								'label'             => __( 'Custom Overlay Color', 'modern-business' ),
+								'default'           => 'rgba(0,0,0,0.5)',
+								'sanitize_callback' => 'sanitize_hex_color',
+								'priority'          => 45,
+								'active_callback'   => 'modern_business_is_hero_slider_options_enabled',
+							],
+						],
 					],
-					'hero_padding_top' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_hero_padding', true) && get_theme_mod('enable_hero_section', true);
-					//	},
-					],
-					'hero_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_hero_padding', true) && get_theme_mod('enable_hero_section', true);
-						},
-					],
-					'hero_padding_bottom' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_hero_padding', true) && get_theme_mod('enable_hero_section', true);
-						},
-					],
-					'hero_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_hero_padding', true) && get_theme_mod('enable_hero_section', true);
-						},
-					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
 				],
 			],
 			// Portfolio Section
@@ -219,104 +277,45 @@ $options = [
 						'sanitize_callback' => 'sanitize_checkbox',
 						'priority'          => 1,
 					],
-					'enable_portfolio_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_section', true);
-					//	},
-					],
-					'portfolio_background_color' => [
+					'portfolio_bg_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Background Color', 'modern-business' ),
 						'default'           => '#ffffff',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_background_color', true) && get_theme_mod('enable_portfolio_section', true);
-					//	},
-					],
-					'enable_portfolio_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_section', true);
-					//	},
+						'priority'          => 5,
 					],
 					'portfolio_text_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#333333',
+						'default'           => '#000000',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_text_color', true) && get_theme_mod('enable_portfolio_section', true);
-					//	},
-					],
-					'enable_portfolio_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_section', true);
-					//	},
+						'priority'          => 10,
 					],
 					'portfolio_padding_top' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_portfolio_padding', true) && get_theme_mod('enable_portfolio_section', true);
-					//	},
-					],
-					'portfolio_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_portfolio_padding', true) && get_theme_mod('enable_portfolio_section', true);
-						},
+						'priority'          => 15,
 					],
 					'portfolio_padding_bottom' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_portfolio_padding', true) && get_theme_mod('enable_portfolio_section', true);
-						},
+						'priority'          => 20,
 					],
-					'portfolio_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_portfolio_padding', true) && get_theme_mod('enable_portfolio_section', true);
-						},
+					'portfolio_font_size' => [
+						'type'              => 'number',
+						'label'             => __( 'Font Size (px)', 'modern-business' ),
+						'default'           => 18,
+						'sanitize_callback' => 'absint',
+						'priority'          => 25,
+						'input_attrs'       => [
+							'min' => 10,
+							'max' => 50,
+						],
 					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
 				],
 			],
 			// Testimonials Section
@@ -334,226 +333,64 @@ $options = [
 						'sanitize_callback' => 'sanitize_checkbox',
 						'priority'          => 1,
 					],
-					'enable_testimonials_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'testimonials_background_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#f9fafb',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_background_color', true) && get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'enable_testimonials_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'testimonials_text_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#374151',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_text_color', true) && get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'enable_testimonials_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'testimonials_padding_top' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_testimonials_padding', true) && get_theme_mod('enable_testimonials_section', true);
-					//	},
-					],
-					'testimonials_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_testimonials_padding', true) && get_theme_mod('enable_testimonials_section', true);
-						},
-					],
-					'testimonials_padding_bottom' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_testimonials_padding', true) && get_theme_mod('enable_testimonials_section', true);
-						},
-					],
-					'testimonials_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_testimonials_padding', true) && get_theme_mod('enable_testimonials_section', true);
-						},
-					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
-				],
-			],
-			// Team Section
-			'modern_business_team_section' => [
-				'type'        => 'section',
-				'title'       => __( 'Team Section', 'modern-business' ),
-				'priority'    => 40,
-				'panel'       => 'modern_business_sections_panel',
-				'options'     => [
-					'enable_team_section' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Team Section', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 1,
-					],
-					'enable_team_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_section', true);
-					//	},
-					],
-					'team_background_color' => [
+					'testimonials_bg_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Background Color', 'modern-business' ),
 						'default'           => '#ffffff',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_background_color', true) && get_theme_mod('enable_team_section', true);
-					//	},
+						'priority'          => 5,
 					],
-					'enable_team_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_section', true);
-					//	},
-					],
-					'team_text_color' => [
+					'testimonials_text_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
+						'default'           => '#000000',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_text_color', true) && get_theme_mod('enable_team_section', true);
-					//	},
+						'priority'          => 10,
 					],
-					'enable_team_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_section', true);
-					//	},
+					'testimonials_text_align' => [
+						'type'              => 'select',
+						'label'             => __( 'Text Alignment', 'modern-business' ),
+						'default'           => 'center',
+						'sanitize_callback' => 'sanitize_text_field',
+						'priority'          => 15,
+						'choices'           => [
+							'left'   => __('Left', 'modern-business'),
+							'center' => __('Center', 'modern-business'),
+							'right'  => __('Right', 'modern-business'),
+						],
 					],
-					'team_padding_top' => [
+					'testimonials_padding_top' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_team_padding', true) && get_theme_mod('enable_team_section', true);
-					//	},
+						'priority'          => 20,
 					],
-					'team_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_team_padding', true) && get_theme_mod('enable_team_section', true);
-						},
-					],
-					'team_padding_bottom' => [
+					'testimonials_padding_bottom' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_team_padding', true) && get_theme_mod('enable_team_section', true);
-						},
+						'priority'          => 25,
 					],
-					'team_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_team_padding', true) && get_theme_mod('enable_team_section', true);
-						},
+					'testimonials_font_size' => [
+						'type'              => 'number',
+						'label'             => __( 'Font Size (px)', 'modern-business' ),
+						'default'           => 18,
+						'sanitize_callback' => 'absint',
+						'priority'          => 30,
+						'input_attrs'       => [
+							'min' => 10,
+							'max' => 50,
+						],
 					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
 				],
 			],
 			// Contact Section
 			'modern_business_contact_section' => [
 				'type'        => 'section',
 				'title'       => __( 'Contact Section', 'modern-business' ),
-				'priority'    => 50,
+				'priority'    => 40,
 				'panel'       => 'modern_business_sections_panel',
 				'options'     => [
 					'enable_contact_section' => [
@@ -564,395 +401,57 @@ $options = [
 						'sanitize_callback' => 'sanitize_checkbox',
 						'priority'          => 1,
 					],
-					'enable_contact_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_section', true);
-					//	},
-					],
-					'contact_background_color' => [
+					'contact_bg_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#f3f4f6',
+						'default'           => '#ffffff',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_background_color', true) && get_theme_mod('enable_contact_section', true);
-					//	},
-					],
-					'enable_contact_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_section', true);
-					//	},
+						'priority'          => 5,
 					],
 					'contact_text_color' => [
 						'type'              => 'color',
 						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
+						'default'           => '#000000',
 						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_text_color', true) && get_theme_mod('enable_contact_section', true);
-					//	},
+						'priority'          => 10,
 					],
-					'enable_contact_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_section', true);
-					//	},
+					'contact_text_align' => [
+						'type'              => 'select',
+						'label'             => __( 'Text Alignment', 'modern-business' ),
+						'default'           => 'center',
+						'sanitize_callback' => 'sanitize_text_field',
+						'priority'          => 15,
+						'choices'           => [
+							'left'   => __('Left', 'modern-business'),
+							'center' => __('Center', 'modern-business'),
+							'right'  => __('Right', 'modern-business'),
+						],
 					],
 					'contact_padding_top' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_contact_padding', true) && get_theme_mod('enable_contact_section', true);
-					//	},
-					],
-					'contact_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_contact_padding', true) && get_theme_mod('enable_contact_section', true);
-						},
+						'priority'          => 20,
 					],
 					'contact_padding_bottom' => [
 						'type'              => 'text',
 						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
+						'default'           => '50px',
 						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_contact_padding', true) && get_theme_mod('enable_contact_section', true);
-						},
+						'priority'          => 25,
 					],
-					'contact_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_contact_padding', true) && get_theme_mod('enable_contact_section', true);
-						},
+					'contact_font_size' => [
+						'type'              => 'number',
+						'label'             => __( 'Font Size (px)', 'modern-business' ),
+						'default'           => 18,
+						'sanitize_callback' => 'absint',
+						'priority'          => 30,
+						'input_attrs'       => [
+							'min' => 10,
+							'max' => 50,
+						],
 					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
-				],
-			],
-			// Blog Section
-			'modern_business_blog_section' => [
-				'type'        => 'section',
-				'title'       => __( 'Blog Section', 'modern-business' ),
-				'priority'    => 60,
-				'panel'       => 'modern_business_sections_panel',
-				'options'     => [
-					'enable_blog_section' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Blog Section', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 1,
-					],
-					'enable_blog_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'blog_background_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#ffffff',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_background_color', true) && get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'enable_blog_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'blog_text_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_text_color', true) && get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'enable_blog_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'blog_padding_top' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					// 'active_callback'   => function() {
-					//		return get_theme_mod('enable_blog_padding', true) && get_theme_mod('enable_blog_section', true);
-					//	},
-					],
-					'blog_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_blog_padding', true) && get_theme_mod('enable_blog_section', true);
-						},
-					],
-					'blog_padding_bottom' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_blog_padding', true) && get_theme_mod('enable_blog_section', true);
-						},
-					],
-					'blog_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-						'active_callback'   => function() {
-							return get_theme_mod('enable_blog_padding', true) && get_theme_mod('enable_blog_section', true);
-						},
-					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
-				],
-			],
-			// Services Section
-			'modern_business_services_section' => [
-				'type'        => 'section',
-				'title'       => __( 'Services Section', 'modern-business' ),
-				'priority'    => 70,
-				'panel'       => 'modern_business_sections_panel',
-				'options'     => [
-					'enable_services_section' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Services Section', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 1,
-					],
-					'enable_services_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					],
-					'services_background_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#ffffff',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					],
-					'enable_services_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					],
-					'services_text_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					],
-					'enable_services_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					],
-					'services_padding_top' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					],
-					'services_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-					],
-					'services_padding_bottom' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-					],
-					'services_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
-				],
-			],
-			// About Section
-			'modern_business_about_section' => [
-				'type'        => 'section',
-				'title'       => __( 'About Section', 'modern-business' ),
-				'priority'    => 80,
-				'panel'       => 'modern_business_sections_panel',
-				'options'     => [
-					'enable_about_section' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable About Section', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 1,
-					],
-					'enable_about_background_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Background Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 5,
-					],
-					'about_background_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Background Color', 'modern-business' ),
-						'default'           => '#ffffff',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 10,
-					],
-					'enable_about_text_color' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Text Color', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 15,
-					],
-					'about_text_color' => [
-						'type'              => 'color',
-						'label'             => __( 'Text Color', 'modern-business' ),
-						'default'           => '#111827',
-						'sanitize_callback' => 'sanitize_hex_color',
-						'priority'          => 20,
-					],
-					'enable_about_padding' => [
-						'type'              => 'checkbox',
-						'control_type'      => 'checkbox',
-						'label'             => __( 'Enable Padding', 'modern-business' ),
-						'default'           => true,
-						'sanitize_callback' => 'sanitize_checkbox',
-						'priority'          => 55,
-					],
-					'about_padding_top' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Top', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 60,
-						'description'       => __( 'CSS padding top value', 'modern-business' ),
-					],
-					'about_padding_right' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Right', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 65,
-						'description'       => __( 'CSS padding right value', 'modern-business' ),
-					],
-					'about_padding_bottom' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Bottom', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 70,
-						'description'       => __( 'CSS padding bottom value', 'modern-business' ),
-					],
-					'about_padding_left' => [
-						'type'              => 'text',
-						'label'             => __( 'Padding Left', 'modern-business' ),
-						'default'           => '20px',
-						'sanitize_callback' => 'sanitize_text_field',
-						'priority'          => 75,
-						'description'       => __( 'CSS padding left value', 'modern-business' ),
-					],
-					// Similarly add margin and border controls with enable toggles and CSS value inputs
 				],
 			],
 		],

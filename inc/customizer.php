@@ -16,7 +16,7 @@ require_once get_template_directory() . '/inc/customizer/css-output/typography.p
 require_once get_template_directory() . '/inc/customizer/rest-api.php';
 require_once get_template_directory() . '/inc/customizer/color-alpha-control.php';
 require_once get_template_directory() . '/inc/customizer/register-sections-panel.php';
-require_once get_template_directory() . '/inc/customizer/test-customizer-panel.php';
+//require_once get_template_directory() . '/inc/customizer/test-customizer-panel.php';
 
 /**
  * Register customizer settings, sections, and controls recursively.
@@ -27,15 +27,27 @@ require_once get_template_directory() . '/inc/customizer/test-customizer-panel.p
  */
 function modern_business_register_options_recursive( $wp_customize, $parent_section, $options ) {
     foreach ( $options as $option_key => $option_data ) {
-        if ( isset( $option_data['type'] ) && $option_data['type'] === 'section' ) {
+        if ( ! isset( $option_data['type'] ) ) {
+            continue;
+        }
+        if ( $option_data['type'] === 'panel' ) {
+            $panel_args = array(
+                'title'    => isset( $option_data['title'] ) ? $option_data['title'] : '',
+                'priority' => isset( $option_data['priority'] ) ? $option_data['priority'] : 10,
+                'panel'    => $parent_section,
+            );
+            $wp_customize->add_panel( $option_key, $panel_args );
+            if ( isset( $option_data['options'] ) && is_array( $option_data['options'] ) ) {
+                modern_business_register_options_recursive( $wp_customize, $option_key, $option_data['options'] );
+            }
+        } elseif ( $option_data['type'] === 'section' ) {
             $section_args = array(
                 'title'    => isset( $option_data['title'] ) ? $option_data['title'] : '',
                 'priority' => isset( $option_data['priority'] ) ? $option_data['priority'] : 10,
-                'panel'    => isset( $option_data['panel'] ) ? $option_data['panel'] : '',
+                'panel'    => $parent_section,
                 'description' => isset( $option_data['description'] ) ? $option_data['description'] : '',
             );
             $wp_customize->add_section( $option_key, $section_args );
-
             if ( isset( $option_data['options'] ) && is_array( $option_data['options'] ) ) {
                 modern_business_register_options_recursive( $wp_customize, $option_key, $option_data['options'] );
             }
@@ -63,9 +75,15 @@ function modern_business_register_options_recursive( $wp_customize, $parent_sect
                 $control_args['input_attrs'] = $option_data['input_attrs'];
             }
 
+            if ( isset( $option_data['active_callback'] ) && is_callable( $option_data['active_callback'] ) ) {
+                $control_args['active_callback'] = $option_data['active_callback'];
+            }
+
             if ( isset( $option_data['type'] ) && $option_data['type'] === 'color' ) {
                 $wp_customize->register_control_type( '\WPTRT\Customize\Control\ColorAlpha' );
                 $wp_customize->add_control( new \WPTRT\Customize\Control\ColorAlpha( $wp_customize, $option_key, $control_args ) );
+            } elseif ( isset( $option_data['control_type'] ) && 'image' === $option_data['control_type'] ) {
+                $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $option_key, $control_args ) );
             } else {
                 $wp_customize->add_control( $option_key, $control_args );
             }
@@ -114,3 +132,8 @@ function modern_business_customize_register( $wp_customize ) {
 }
 
 add_action( 'customize_register', 'modern_business_customize_register' );
+
+function modern_business_enqueue_hero_slider_script() {
+    wp_enqueue_script( 'modern-business-hero-slider', get_template_directory_uri() . '/inc/customizer/js/hero-slider.js', array( 'jquery' ), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'modern_business_enqueue_hero_slider_script' );
