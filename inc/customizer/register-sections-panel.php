@@ -107,4 +107,6 @@ function modern_business_register_sections_panel( $wp_customize ) {
 		}
 	}
 }
+/* Commented out to avoid conflict with inc/customizer.php registration function
 add_action( 'customize_register', 'modern_business_register_sections_panel' );
+*/

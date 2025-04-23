@@ -14,7 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/customizer/callbacks.php';
 require_once get_template_directory() . '/inc/customizer/css-output/typography.php';
 require_once get_template_directory() . '/inc/customizer/rest-api.php';
+require_once get_template_directory() . '/inc/customizer/color-alpha-control.php';
 require_once get_template_directory() . '/inc/customizer/register-sections-panel.php';
+require_once get_template_directory() . '/inc/customizer/test-customizer-panel.php';
 
 /**
  * Register customizer settings, sections, and controls recursively.
@@ -61,7 +63,12 @@ function modern_business_register_options_recursive( $wp_customize, $parent_sect
                 $control_args['input_attrs'] = $option_data['input_attrs'];
             }
 
-            $wp_customize->add_control( $option_key, $control_args );
+            if ( isset( $option_data['type'] ) && $option_data['type'] === 'color' ) {
+                $wp_customize->register_control_type( '\WPTRT\Customize\Control\ColorAlpha' );
+                $wp_customize->add_control( new \WPTRT\Customize\Control\ColorAlpha( $wp_customize, $option_key, $control_args ) );
+            } else {
+                $wp_customize->add_control( $option_key, $control_args );
+            }
         }
     }
 }
@@ -100,7 +107,7 @@ function modern_business_customize_register( $wp_customize ) {
             $wp_customize->add_panel( $key, $panel_args );
 
             if ( isset( $option['options'] ) && is_array( $option['options'] ) ) {
-                modern_business_register_options_recursive( $wp_customize, '', $option['options'] );
+                modern_business_register_options_recursive( $wp_customize, $key, $option['options'] );
             }
         }
     }
