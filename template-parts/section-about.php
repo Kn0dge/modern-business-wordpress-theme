@@ -33,10 +33,11 @@ $about_columns = array(
 );
 ?>
 
-<section id="about" class="section about-section">
-    <div class="container">
+<section id="about" class="section about-section" style="position: relative;">
+    <div class="background-color-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
+    <div class="container" style="position: relative; z-index: 2;">
         <h2 class="section-title animate-on-scroll"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle animate-on-scroll"><?php echo esc_html($section_subtitle); ?></p>
+        <p class="section-subtitle animate-on-scroll" style="text-align: <?php echo esc_attr(get_theme_mod('about_text_align', 'center')); ?>;"><?php echo esc_html($section_subtitle); ?></p>
         
         <div class="about-columns animate-on-scroll">
             <?php foreach ($about_columns as $column) : ?>

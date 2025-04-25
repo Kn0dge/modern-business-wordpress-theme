@@ -23,7 +23,7 @@ $address = get_theme_mod('contact_address', '123 Main St, City, Country');
 <section id="contact" class="section contact-section">
     <div class="container">
         <h2 class="section-title animate-on-scroll"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle animate-on-scroll"><?php echo esc_html($section_subtitle); ?></p>
+        <p class="section-subtitle animate-on-scroll" style="text-align: <?php echo esc_attr(get_theme_mod('contact_text_align', 'center')); ?>;"><?php echo esc_html($section_subtitle); ?></p>
         
         <div class="contact-container animate-on-scroll">
             <div class="contact-info">

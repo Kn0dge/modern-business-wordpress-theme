@@ -29,7 +29,7 @@ $team_query = new WP_Query($args);
 <section id="team" class="section team-section">
     <div class="container">
         <h2 class="section-title animate-on-scroll"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle animate-on-scroll"><?php echo esc_html($section_subtitle); ?></p>
+        <p class="section-subtitle animate-on-scroll" style="text-align: <?php echo esc_attr(get_theme_mod('team_text_align', 'center')); ?>;"><?php echo esc_html($section_subtitle); ?></p>
         
         <?php if ($team_query->have_posts()) : ?>
             <div class="team-grid animate-on-scroll">

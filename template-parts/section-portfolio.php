@@ -35,7 +35,7 @@ $portfolio_query = new WP_Query($args);
 <section id="portfolio" class="section portfolio-section">
     <div class="container">
         <h2 class="section-title animate-on-scroll"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle animate-on-scroll"><?php echo esc_html($section_subtitle); ?></p>
+        <p class="section-subtitle animate-on-scroll" style="text-align: <?php echo esc_attr(get_theme_mod('portfolio_text_align', 'center')); ?>;"><?php echo esc_html($section_subtitle); ?></p>
         
         <?php if (!empty($categories) && !is_wp_error($categories)) : ?>
             <div class="portfolio-filter animate-on-scroll">

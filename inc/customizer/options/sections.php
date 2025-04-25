@@ -281,14 +281,6 @@ $options = [
 								'sanitize_callback' => 'sanitize_hex_color',
 								'priority'          => 15,
 							],
-							'about_background' => [
-								'type'              => 'image',
-								'control_type'      => 'image',
-								'label'             => __( 'About Background Image', 'modern-business' ),
-								'default'           => '',
-								'sanitize_callback' => 'modern_business_sanitize_image',
-								'priority'          => 20,
-							],
 							'about_text_color' => [
 								'type'              => 'color',
 								'label'             => __( 'Text Color', 'modern-business' ),
@@ -338,7 +330,7 @@ $options = [
 					],
 			// Services Section
 
-					'modern_business_services_section_options' => [
+'modern_business_services_section_options' => [
 						'type'     => 'section',
 						'title'    => __( 'Services Section Options', 'modern-business' ),
 						'priority' => 40,
@@ -351,6 +343,31 @@ $options = [
 								'default'           => true,
 								'sanitize_callback' => 'sanitize_checkbox',
 								'priority'          => 1,
+							],
+							'services_title' => [
+								'type'              => 'text',
+								'label'             => __( 'Section Title', 'modern-business' ),
+								'default'           => __( 'Our Services', 'modern-business' ),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 2,
+							],
+							'services_subtitle' => [
+								'type'              => 'textarea',
+								'label'             => __( 'Section Subtitle', 'modern-business' ),
+								'default'           => __( 'We offer a wide range of services to meet your needs', 'modern-business' ),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 3,
+							],
+							'services_count' => [
+								'type'              => 'number',
+								'label'             => __( 'Number of Services', 'modern-business' ),
+								'default'           => 6,
+								'sanitize_callback' => 'absint',
+								'priority'          => 4,
+								'input_attrs'       => [
+									'min' => 1,
+									'max' => 20,
+								],
 							],
 							'services_bg_color' => [
 								'type'              => 'color',
@@ -439,14 +456,6 @@ $options = [
 								'sanitize_callback' => 'sanitize_hex_color',
 								'priority'          => 20,
 							],
-							'portfolio_background' => [
-								'type'              => 'image',
-								'control_type'      => 'image',
-								'label'             => __( 'Portfolio Background Image', 'modern-business' ),
-								'default'           => '',
-								'sanitize_callback' => 'modern_business_sanitize_image',
-								'priority'          => 25,
-							],
 							'portfolio_text_color' => [
 								'type'              => 'color',
 								'label'             => __( 'Text Color', 'modern-business' ),
@@ -509,7 +518,7 @@ $options = [
 						],
 					],
 			// Team Section
-					'modern_business_team_section_options' => [
+'modern_business_team_section_options' => [
 						'type'     => 'section',
 						'title'    => __( 'Team Section Options', 'modern-business' ),
 						'priority' => 60,
@@ -522,6 +531,31 @@ $options = [
 								'default'           => true,
 								'sanitize_callback' => 'sanitize_checkbox',
 								'priority'          => 1,
+							],
+							'team_title' => [
+								'type'              => 'text',
+								'label'             => __( 'Section Title', 'modern-business' ),
+								'default'           => __( 'Our Team', 'modern-business' ),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 2,
+							],
+							'team_subtitle' => [
+								'type'              => 'textarea',
+								'label'             => __( 'Section Subtitle', 'modern-business' ),
+								'default'           => __( 'Meet the people behind our success', 'modern-business' ),
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 3,
+							],
+							'team_count' => [
+								'type'              => 'number',
+								'label'             => __( 'Number of Team Members', 'modern-business' ),
+								'default'           => 4,
+								'sanitize_callback' => 'absint',
+								'priority'          => 4,
+								'input_attrs'       => [
+									'min' => 1,
+									'max' => 20,
+								],
 							],
 							'team_bg_color' => [
 								'type'              => 'color',
@@ -598,14 +632,6 @@ $options = [
 								'default'           => '#ffffff',
 								'sanitize_callback' => 'sanitize_hex_color',
 								'priority'          => 15,
-							],
-							'testimonials_background' => [
-								'type'              => 'image',
-								'control_type'      => 'image',
-								'label'             => __( 'Testimonials Background Image', 'modern-business' ),
-								'default'           => '',
-								'sanitize_callback' => 'modern_business_sanitize_image',
-								'priority'          => 20,
 							],
 							'testimonials_text_color' => [
 								'type'              => 'color',
@@ -729,36 +755,57 @@ $options = [
 								'label'             => __( 'Contact Title', 'modern-business' ),
 								'default'           => __( 'Contact Us', 'modern-business' ),
 								'sanitize_callback' => 'sanitize_text_field',
-								'priority'          => 5,
+								'priority'          => 2,
 							],
 							'contact_subtitle' => [
 								'type'              => 'textarea',
 								'label'             => __( 'Contact Subtitle', 'modern-business' ),
 								'default'           => __( 'Get in touch with us', 'modern-business' ),
 								'sanitize_callback' => 'sanitize_text_field',
-								'priority'          => 10,
+								'priority'          => 3,
 							],
+							'contact_phone' => [
+'type'              => 'text',
+'label'             => __( 'Phone Number', 'modern-business' ),
+'default'           => '(123) 456-7890',
+'sanitize_callback' => 'sanitize_text_field',
+'priority'          => 4,
+],
+'contact_email' => [
+'type'              => 'text',
+'label'             => __( 'Email Address', 'modern-business' ),
+'default'           => 'info@example.com',
+'sanitize_callback' => 'sanitize_email',
+'priority'          => 5,
+],
+'contact_address' => [
+'type'              => 'textarea',
+'label'             => __( 'Physical Address', 'modern-business' ),
+'default'           => '123 Main St, City, Country',
+'sanitize_callback' => 'sanitize_textarea_field',
+'priority'          => 6,
+],
+							'contact_form_shortcode' => [
+'type'              => 'text',
+'label'             => __( 'Contact Form Shortcode', 'modern-business' ),
+'default'           => '',
+'sanitize_callback' => 'sanitize_text_field',
+'priority'          => 7,
+],
+
 							'contact_bg_color' => [
 								'type'              => 'color',
 								'label'             => __( 'Background Color', 'modern-business' ),
 								'default'           => '#ffffff',
 								'sanitize_callback' => 'sanitize_hex_color',
-								'priority'          => 15,
-							],
-							'contact_background' => [
-								'type'              => 'image',
-								'control_type'      => 'image',
-								'label'             => __( 'Contact Background Image', 'modern-business' ),
-								'default'           => '',
-								'sanitize_callback' => 'modern_business_sanitize_image',
-								'priority'          => 20,
+								'priority'          => 8,
 							],
 							'contact_text_color' => [
 								'type'              => 'color',
 								'label'             => __( 'Text Color', 'modern-business' ),
 								'default'           => '#000000',
 								'sanitize_callback' => 'sanitize_hex_color',
-								'priority'          => 25,
+								'priority'          => 9,
 							],
 							'contact_text_align' => [
 								'type'              => 'select',
@@ -766,7 +813,12 @@ $options = [
 								'label'             => __( 'Text Alignment', 'modern-business' ),
 								'default'           => 'center',
 								'sanitize_callback' => 'sanitize_text_field',
-								'priority'          => 30,
+								'priority'          => 10,
+								'choices'           => [
+									'left'   => __( 'Left', 'modern-business' ),
+									'center' => __( 'Center', 'modern-business' ),
+									'right'  => __( 'Right', 'modern-business' ),
+								],
 					],
 				],
 			],

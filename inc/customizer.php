@@ -130,6 +130,29 @@ function modern_business_customize_register( $wp_customize ) {
             }
         }
     }
+
+    //Blog Section
+    if ( isset( $wp_customize->selective_refresh ) ) {
+        $wp_customize->selective_refresh->add_partial( 'enable_blog_section', array(
+        'selector'        => '.blog-section',
+        'render_callback' => function() {
+        get_template_part( 'template-parts/section', 'blog' );
+        },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'blog_title', array(
+        'selector'        => '.blog-section .section-title',
+        'render_callback' => function() {
+        return get_theme_mod( 'blog_title', __( 'Latest Blog Posts', 'modern-business' ) );
+        },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'blog_subtitle', array(
+        'selector'        => '.blog-section .section-subtitle',
+        'render_callback' => function() {
+        return get_theme_mod( 'blog_subtitle', __( 'Read our latest articles and news', 'modern-business' ) );
+        },
+        ) );
+        // Add more partials as needed for other blog options
+        }
 }
 
 add_action( 'customize_register', 'modern_business_customize_register' );
@@ -144,3 +167,15 @@ function modern_business_enqueue_hero_slider_overlay_styles() {
     wp_enqueue_style( 'modern-business-hero-slider-overlay', get_template_directory_uri() . '/inc/customizer/css/hero-slider-overlay.css', array(), '1.0' );
 }
 add_action( 'wp_enqueue_scripts', 'modern_business_enqueue_hero_slider_overlay_styles' );
+
+function modern_business_customizer_live_preview_scripts() {
+    wp_enqueue_script(
+        'modern-business-customizer',
+        get_template_directory_uri() . '/inc/customizer/js/customizer.js',
+        array( 'jquery', 'customize-preview' ),
+        '1.0',
+        true
+    );
+}
+add_action( 'customize_preview_init', 'modern_business_customizer_live_preview_scripts' );
+

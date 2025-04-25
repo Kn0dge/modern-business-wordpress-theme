@@ -30,7 +30,7 @@ $services_query = new WP_Query($args);
 <section id="services" class="section services-section">
     <div class="container">
         <h2 class="section-title animate-on-scroll"><?php echo esc_html($section_title); ?></h2>
-        <p class="section-subtitle animate-on-scroll"><?php echo esc_html($section_subtitle); ?></p>
+        <p class="section-subtitle animate-on-scroll" style="text-align: <?php echo esc_attr(get_theme_mod('services_text_align', 'center')); ?>;"><?php echo esc_html($section_subtitle); ?></p>
         
         <?php if ($services_query->have_posts()) : ?>
             <div class="services-grid animate-on-scroll">

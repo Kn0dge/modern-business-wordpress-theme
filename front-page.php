@@ -62,10 +62,10 @@ if (!empty($homepage_sections)) {
     <?php endif; ?>
 
     <?php if (is_active_sidebar('section-blog')) : ?>
-        <?php dynamic_sidebar('section-blog'); ?>
-    <?php elseif ( get_theme_mod( 'enable_blog_section', true ) ) : ?>
-        <?php get_template_part('template-parts/section', 'blog'); ?>
-    <?php endif; ?>
+    <?php dynamic_sidebar('section-blog'); ?>
+<?php elseif ( get_theme_mod( 'enable_blog_section', true ) ) : ?>
+    <?php get_template_part('template-parts/section', 'blog'); ?>
+<?php endif; ?>
 
     <?php if (is_active_sidebar('section-contact')) : ?>
         <?php dynamic_sidebar('section-contact'); ?>
@@ -77,8 +77,13 @@ if (!empty($homepage_sections)) {
 
 if ( have_posts() ) :
     while ( have_posts() ) : the_post();
+        if ( get_the_title() === 'Hello world!' ) {
+            // Skip default post
+            continue;
+        }
         the_content();
     endwhile;
 endif;
+
 
 get_footer();

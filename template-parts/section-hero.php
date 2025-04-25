@@ -85,7 +85,7 @@ $hero_style = sprintf(
 
     <div class="hero-content animate-on-scroll" style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 20px; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: <?php echo esc_attr($hero_text_align === 'center' ? 'center' : ($hero_text_align === 'right' ? 'flex-end' : 'flex-start')); ?>; text-align: <?php echo esc_attr($hero_text_align); ?>;">
         <h1 class="hero-title" style="font-size: <?php echo esc_attr($hero_font_size); ?>px; margin-bottom: 20px; color: <?php echo esc_attr($hero_text_color); ?>;"><?php echo esc_html($hero_title); ?></h1>
-        <p class="hero-subtitle" style="margin-bottom: 30px; color: <?php echo esc_attr($hero_text_color); ?>;"><?php echo esc_html($hero_subtitle); ?></p>
+        <p class="hero-subtitle" style="margin-bottom: 30px; color: <?php echo esc_attr($hero_text_color); ?>; text-align: <?php echo esc_attr(get_theme_mod('hero_text_align', 'center')); ?>;"><?php echo esc_html($hero_subtitle); ?></p>
 
         <div class="hero-buttons">
             <?php if ($hero_primary_btn_text) { ?>
