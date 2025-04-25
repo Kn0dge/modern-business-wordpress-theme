@@ -286,6 +286,26 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--spacing-2);
 }
 
+/* Hero Slider */
+.hero-slider-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  }
+  .hero-slider-overlay-light {
+  background-color: rgba(255, 255, 255, 0.3);
+  }
+  .hero-slider-overlay-dark {
+  background-color: rgba(0, 0, 0, 0.5);
+  }
+  .hero-slider-overlay-custom {
+  /* background-color is set inline */
+  }
+
 /* About Section */
 .about-columns {
   display: grid;

@@ -137,3 +137,9 @@ function modern_business_enqueue_hero_slider_script() {
     wp_enqueue_script( 'modern-business-hero-slider', get_template_directory_uri() . '/inc/customizer/js/hero-slider.js', array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'modern_business_enqueue_hero_slider_script' );
+
+// Enqueue hero slider overlay styles
+function modern_business_enqueue_hero_slider_overlay_styles() {
+    wp_enqueue_style( 'modern-business-hero-slider-overlay', get_template_directory_uri() . '/inc/customizer/css/hero-slider-overlay.css', array(), '1.0' );
+}
+add_action( 'wp_enqueue_scripts', 'modern_business_enqueue_hero_slider_overlay_styles' );

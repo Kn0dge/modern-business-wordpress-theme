@@ -58,6 +58,23 @@ $hero_style = sprintf(
             <?php foreach ($slider_images as $index => $image) : ?>
                 <div class="hero-slide" style="background-image: url('<?php echo esc_url($image); ?>'); width: 100%; height: 100%; background-size: cover; background-position: center; position: absolute; top: 0; left: 0; opacity: <?php echo $index === 0 ? '1' : '0'; ?>; transition: opacity 1s ease-in-out;"></div>
             <?php endforeach; ?>
+            <?php
+                $overlay = get_theme_mod('hero_slider_overlay', 'none');
+                $overlay_color = get_theme_mod('hero_slider_overlay_color', 'rgba(0,0,0,0.5)');
+                $overlay_class = '';
+                $overlay_style = '';
+                if ($overlay === 'light') {
+                    $overlay_class = 'hero-slider-overlay-light';
+                } elseif ($overlay === 'dark') {
+                    $overlay_class = 'hero-slider-overlay-dark';
+                } elseif ($overlay === 'custom') {
+                    $overlay_class = 'hero-slider-overlay-custom';
+                    $overlay_style = 'background-color: ' . esc_attr($overlay_color) . ';';
+                }
+            ?>
+            <?php if ($overlay !== 'none') : ?>
+                <div class="hero-slider-overlay <?php echo esc_attr($overlay_class); ?>" style="<?php echo $overlay_style; ?>"></div>
+            <?php endif; ?>
         </div>
     <?php else : ?>
         <style>
