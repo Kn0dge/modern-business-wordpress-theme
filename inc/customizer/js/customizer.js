@@ -16,24 +16,47 @@
                 } else if (newval === 'dark') {
                     $overlay.addClass('hero-slider-overlay-dark');
                     $overlay.css('background-color', '');
-                } else if (newval === 'custom') {
-                    $overlay.addClass('hero-slider-overlay-custom');
-                    var customColor = wp.customize.value('hero_slider_overlay_color')();
-                    $overlay.css('background-color', customColor);
                 }
             }
         });
     });
 
-    // Add live preview for custom overlay color
-    wp.customize('hero_slider_overlay_color', function(value) {
+    // Live preview for portfolio count
+    wp.customize('portfolio_count', function(value) {
         value.bind(function(newval) {
-            var $overlay = $('.hero-slider-overlay.hero-slider-overlay-custom');
-            if ($overlay.length) {
-                $overlay.css('background-color', newval);
-            }
+            location.reload();
         });
     });
+
+    // Live preview for testimonials count
+    wp.customize('testimonials_count', function(value) {
+        value.bind(function(newval) {
+            location.reload();
+        });
+    });
+
+    // Live preview for team count
+    wp.customize('team_count', function(value) {
+        value.bind(function(newval) {
+            location.reload();
+        });
+    });
+
+    // Live preview for blog count
+    wp.customize('blog_count', function(value) {
+        value.bind(function(newval) {
+            location.reload();
+        });
+    });
+
+    // Live preview for contact form shortcode
+    wp.customize('contact_form_shortcode', function(value) {
+        value.bind(function(newval) {
+            location.reload();
+        });
+    });
+
+    // Removed live preview for custom overlay color as custom option is removed
 
     // Existing code...
 })(jQuery);

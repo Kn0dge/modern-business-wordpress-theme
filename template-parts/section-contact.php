@@ -10,9 +10,9 @@ if ( ! get_theme_mod( 'enable_contact_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_contact_title', __('Contact Us', 'modern-business'));
-$section_subtitle = get_option('modern_business_contact_subtitle', __('Get in touch with us', 'modern-business'));
-$contact_form_shortcode = get_option('modern_business_contact_form_shortcode', '');
+$section_title = get_theme_mod('contact_title', __('Contact Us', 'modern-business'));
+$section_subtitle = get_theme_mod('contact_subtitle', __('Get in touch with us', 'modern-business'));
+$contact_form_shortcode = get_theme_mod('contact_form_shortcode', '');
 
 // Get contact info from customizer
 $phone = get_theme_mod('contact_phone', '(123) 456-7890');

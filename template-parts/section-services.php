@@ -10,13 +10,15 @@ if ( ! get_theme_mod( 'enable_services_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_services_title', __('Our Services', 'modern-business'));
-$section_subtitle = get_option('modern_business_services_subtitle', __('We offer a wide range of services to meet your needs', 'modern-business'));
+$section_title = get_theme_mod('services_title', __('Our Services', 'modern-business'));
+$section_subtitle = get_theme_mod('services_subtitle', __('We offer a wide range of services to meet your needs', 'modern-business'));
+
+$services_count = get_theme_mod('services_count', 6);
 
 // Query services
 $args = array(
     'post_type' => 'service',
-    'posts_per_page' => 6,
+    'posts_per_page' => $services_count,
     'post_status' => 'publish',
     'orderby' => 'menu_order',
     'order' => 'ASC',

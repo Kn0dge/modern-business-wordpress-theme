@@ -67,9 +67,6 @@ $hero_style = sprintf(
                     $overlay_class = 'hero-slider-overlay-light';
                 } elseif ($overlay === 'dark') {
                     $overlay_class = 'hero-slider-overlay-dark';
-                } elseif ($overlay === 'custom') {
-                    $overlay_class = 'hero-slider-overlay-custom';
-                    $overlay_style = 'background-color: ' . esc_attr($overlay_color) . ';';
                 }
             ?>
             <?php if ($overlay !== 'none') : ?>

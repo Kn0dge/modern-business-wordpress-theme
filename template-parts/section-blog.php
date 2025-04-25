@@ -10,9 +10,11 @@ if ( ! get_theme_mod( 'enable_blog_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_blog_title', __('Latest Blog Posts', 'modern-business'));
-$section_subtitle = get_option('modern_business_blog_subtitle', __('Read our latest articles and news', 'modern-business'));
-$blog_count = get_option('modern_business_blog_count', 3);
+$section_title = get_theme_mod('blog_title', __('Latest Blog Posts', 'modern-business'));
+$section_subtitle = get_theme_mod('blog_subtitle', __('Read our latest articles and news', 'modern-business'));
+$blog_count = get_theme_mod('blog_count', 3);
+
+$blog_count = get_theme_mod('blog_count', 3);
 
 // Query blog posts
 $args = array(

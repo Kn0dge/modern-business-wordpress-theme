@@ -10,9 +10,9 @@ if ( ! get_theme_mod( 'enable_testimonials_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_testimonials_title', __('Testimonials', 'modern-business'));
-$section_subtitle = get_option('modern_business_testimonials_subtitle', __('What our clients say about us', 'modern-business'));
-$testimonials_count = get_option('modern_business_testimonials_count', 5);
+$section_title = get_theme_mod('testimonials_title', __('Testimonials', 'modern-business'));
+$section_subtitle = get_theme_mod('testimonials_subtitle', __('What our clients say about us', 'modern-business'));
+$testimonials_count = get_theme_mod('testimonials_count', 5);
 
 // Query testimonials
 $args = array(

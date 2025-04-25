@@ -10,8 +10,8 @@ if ( ! get_theme_mod( 'enable_about_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_about_title', __('About Us', 'modern-business'));
-$section_subtitle = get_option('modern_business_about_subtitle', __('Learn more about our company and our mission', 'modern-business'));
+$section_title = get_theme_mod('about_title', __('About Us', 'modern-business'));
+$section_subtitle = get_theme_mod('about_subtitle', __('Learn more about our company and our mission', 'modern-business'));
 
 // Sample about content - in a real theme you might pull this from a page
 $about_columns = array(

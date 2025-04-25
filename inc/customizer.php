@@ -81,6 +81,7 @@ function modern_business_register_options_recursive( $wp_customize, $parent_sect
 
             if ( isset( $option_data['type'] ) && $option_data['type'] === 'color' ) {
                 $wp_customize->register_control_type( '\WPTRT\Customize\Control\ColorAlpha' );
+                $control_args['type'] = 'color'; // Force type to color for proper rendering
                 $wp_customize->add_control( new \WPTRT\Customize\Control\ColorAlpha( $wp_customize, $option_key, $control_args ) );
             } elseif ( isset( $option_data['control_type'] ) && 'image' === $option_data['control_type'] ) {
                 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $option_key, $control_args ) );

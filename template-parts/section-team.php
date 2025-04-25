@@ -10,9 +10,9 @@ if ( ! get_theme_mod( 'enable_team_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_team_title', __('Our Team', 'modern-business'));
-$section_subtitle = get_option('modern_business_team_subtitle', __('Meet the people behind our success', 'modern-business'));
-$team_count = get_option('modern_business_team_count', 4);
+$section_title = get_theme_mod('team_title', __('Our Team', 'modern-business'));
+$section_subtitle = get_theme_mod('team_subtitle', __('Meet the people behind our success', 'modern-business'));
+$team_count = get_theme_mod('team_count', 4);
 
 // Query team members
 $args = array(

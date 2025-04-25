@@ -5,6 +5,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Sanitize RGBA color string.
+ *
+ * @param string $color RGBA color string.
+ * @return string Sanitized RGBA color string or empty string.
+ */
+function modern_business_sanitize_rgba_color( $color ) {
+    if ( empty( $color ) ) {
+        return '';
+    }
+
+    // Allow hex colors without alpha
+    if ( preg_match( '/^#([A-Fa-f0-9]{3}){1,2}$/', $color ) ) {
+        return sanitize_hex_color( $color );
+    }
+
+    // Allow rgba colors
+    if ( preg_match( '/^rgba?\(\s*(\d{1,3}\s*,\s*){2,3}(\d{1,3}|\d*\.?\d+)\s*\)$/', $color ) ) {
+        return esc_attr( $color );
+    }
+
+    return '';
+}
+
+/**
  * Sanitize image input for customizer.
  *
  * @param string $image Image URL or attachment ID.

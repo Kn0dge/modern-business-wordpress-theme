@@ -10,13 +10,10 @@
 }
 
 .hero-slider-overlay-light {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .hero-slider-overlay-dark {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.hero-slider-overlay-custom {
-    /* background-color is set inline */
-}

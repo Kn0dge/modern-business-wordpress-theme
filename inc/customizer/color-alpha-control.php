@@ -16,6 +16,7 @@ use function wp_enqueue_script;
 use function get_template_directory_uri;
 use function wp_enqueue_style;
 use WP_Customize_Control;
+use WP_Customize_Color_Control;
 
 /**
  * @var WP_Customize_Control $this
@@ -33,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( class_exists( 'WP_Customize_Control' ) ) {
 
-    class ColorAlpha extends WP_Customize_Control {
+    class ColorAlpha extends WP_Customize_Color_Control {
 
         public $type = 'color-alpha';
 
@@ -60,7 +61,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 <?php if ( ! empty( $this->description ) ) : ?>
                     <span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
                 <?php endif; ?>
-                <input class="color-alpha" type="text" <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" />
+                <input class="color-alpha wp-color-picker" type="text" <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" />
             </label>
             <?php
         }

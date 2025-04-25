@@ -10,9 +10,9 @@ if ( ! get_theme_mod( 'enable_portfolio_section', true ) ) {
 }
 
 // Get section settings from theme options
-$section_title = get_option('modern_business_portfolio_title', __('Our Portfolio', 'modern-business'));
-$section_subtitle = get_option('modern_business_portfolio_subtitle', __('Check out our latest work', 'modern-business'));
-$portfolio_count = get_option('modern_business_portfolio_count', 6);
+$section_title = get_theme_mod('portfolio_title', __('Our Portfolio', 'modern-business'));
+$section_subtitle = get_theme_mod('portfolio_subtitle', __('Check out our latest work', 'modern-business'));
+$portfolio_count = get_theme_mod('portfolio_count', 6);
 
 // Get categories for filtering
 $categories = get_terms(array(
