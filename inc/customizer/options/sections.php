@@ -800,12 +800,20 @@ $options = [
 								'sanitize_callback' => 'sanitize_hex_color',
 								'priority'          => 8,
 							],
+							'contact_info_bg_color' => [
+								'type'              => 'color',
+								'control_type'      => 'color',
+								'label'             => __( 'Contact Info Background Color', 'modern-business' ),
+								'default'           => '#f5f5f5',
+								'sanitize_callback' => 'sanitize_hex_color',
+								'priority'          => 9,
+							],
 							'contact_text_color' => [
 								'type'              => 'color',
 								'label'             => __( 'Text Color', 'modern-business' ),
 								'default'           => '#000000',
 								'sanitize_callback' => 'sanitize_hex_color',
-								'priority'          => 9,
+								'priority'          => 10,
 							],
 							'contact_text_align' => [
 								'type'              => 'select',
@@ -813,7 +821,7 @@ $options = [
 								'label'             => __( 'Text Alignment', 'modern-business' ),
 								'default'           => 'center',
 								'sanitize_callback' => 'sanitize_text_field',
-								'priority'          => 10,
+								'priority'          => 11,
 								'choices'           => [
 									'left'   => __( 'Left', 'modern-business' ),
 									'center' => __( 'Center', 'modern-business' ),

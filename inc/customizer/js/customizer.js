@@ -480,6 +480,12 @@
         });
     });
 
+    wp.customize('contact_info_bg_color', function(value) {
+        value.bind(function(newval) {
+            $('.contact-section .contact-info').css('background-color', newval);
+        });
+    });
+
     /*   // Live preview for portfolio count
         wp.customize('portfolio_count', function(value) {
             value.bind(function(newval) {
