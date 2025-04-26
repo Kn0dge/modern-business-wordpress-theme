@@ -30,6 +30,36 @@
             $('body').css('background-color', newval);
         });
     });
+    wp.customize('general_link_color', function(value) {
+        value.bind(function(newval) {
+            $('body a, body a:visited').css('color', newval);
+        });
+    });
+    wp.customize('general_link_hover_color', function(value) {
+        value.bind(function(newval) {
+            $('body a:hover, body a:focus').css('color', newval);
+        });
+    });
+    wp.customize('header_link_color', function(value) {
+        value.bind(function(newval) {
+            $(' header a, header a:visited').css('color', newval);
+        });
+    });
+    wp.customize('header_link_hover_color', function(value) {
+        value.bind(function(newval) {
+            $('header a:hover, header a:focus').css('color', newval);
+        });
+    });
+    wp.customize('general_heading_color', function(value) {
+        value.bind(function(newval) {
+            $('h1, h2, h3, h4, h5, h6').css('color', newval);
+        });
+    });
+    wp.customize('general_border_color', function(value) {
+        value.bind(function(newval) {
+            $('body').css('border-color', newval);
+        });
+    });
 
     // General Settings - Typography
     wp.customize('general_font_family', function(value) {
@@ -40,6 +70,21 @@
     wp.customize('general_font_size', function(value) {
         value.bind(function(newval) {
             $('body').css('font-size', newval + 'px');
+        });
+    });
+    wp.customize('general_font_weight', function(value) {
+        value.bind(function(newval) {
+            $('body').css('font-weight', newval);
+        });
+    });
+    wp.customize('general_line_height', function(value) {
+        value.bind(function(newval) {
+            $('body').css('line-height', newval);
+        });
+    });
+    wp.customize('general_letter_spacing', function(value) {
+        value.bind(function(newval) {
+            $('body').css('letter-spacing', newval + 'em');
         });
     });
 

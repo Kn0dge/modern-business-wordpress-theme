@@ -115,6 +115,18 @@ class Modern_Business_Typography_CSS {
 							// Determine if background or text color
 							if ( strpos( $option_key, 'background_color' ) !== false ) {
 								$css .= $selector . '{ background-color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'general_link_color' ) {
+								$css .= $selector . ' a, ' . $selector . ' a:visited { color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'general_link_hover_color' ) {
+								$css .= $selector . ' a:hover, ' . $selector . ' a:focus { color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'header_link_color' ) {
+								$css .= '#masthead a, #masthead a:visited { color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'header_link_hover_color' ) {
+								$css .= '#masthead a:hover, #masthead a:focus { color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'general_heading_color' ) {
+								$css .= $selector . ' h1, ' . $selector . ' h2, ' . $selector . ' h3, ' . $selector . ' h4, ' . $selector . ' h5, ' . $selector . ' h6 { color: ' . esc_attr( $value ) . '; }';
+							} elseif ( $option_key === 'general_border_color' ) {
+								$css .= $selector . ' { border-color: ' . esc_attr( $value ) . '; }';
 							} else {
 								$css .= $selector . '{ color: ' . esc_attr( $value ) . '; }';
 							}
@@ -129,6 +141,72 @@ class Modern_Business_Typography_CSS {
 						$selector = $this->get_selector_for_option( $option_key );
 						if ( ! empty( $value ) && ! empty( $selector ) ) {
 							$css .= $selector . '{ font-family: ' . esc_attr( $value ) . '; }';
+						}
+					}
+				}
+
+				// Handle font weight
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'select' && strpos( $option_key, 'font_weight' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( ! empty( $value ) && ! empty( $selector ) ) {
+							$css .= $selector . '{ font-weight: ' . esc_attr( $value ) . '; }';
+						}
+					}
+				}
+
+				// Handle line height
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'number' && strpos( $option_key, 'line_height' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( ! empty( $value ) && ! empty( $selector ) ) {
+							$css .= $selector . '{ line-height: ' . esc_attr( $value ) . '; }';
+						}
+					}
+				}
+
+				// Handle letter spacing
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'number' && strpos( $option_key, 'letter_spacing' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( $value !== '' && ! empty( $selector ) ) {
+							$css .= $selector . '{ letter-spacing: ' . esc_attr( $value ) . 'em; }';
+						}
+					}
+				}
+
+				// Handle font weight
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'select' && strpos( $option_key, 'font_weight' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( ! empty( $value ) && ! empty( $selector ) ) {
+							$css .= $selector . '{ font-weight: ' . esc_attr( $value ) . '; }';
+						}
+					}
+				}
+
+				// Handle line height
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'number' && strpos( $option_key, 'line_height' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( ! empty( $value ) && ! empty( $selector ) ) {
+							$css .= $selector . '{ line-height: ' . esc_attr( $value ) . '; }';
+						}
+					}
+				}
+
+				// Handle letter spacing
+				if ( isset( $option_data['type'] ) && $option_data['type'] === 'number' && strpos( $option_key, 'letter_spacing' ) !== false ) {
+					$enable_key = 'enable_' . $option_key;
+					if ( get_theme_mod( $enable_key, true ) ) {
+						$selector = $this->get_selector_for_option( $option_key );
+						if ( $value !== '' && ! empty( $selector ) ) {
+							$css .= $selector . '{ letter-spacing: ' . esc_attr( $value ) . 'em; }';
 						}
 					}
 				}
@@ -199,6 +277,9 @@ class Modern_Business_Typography_CSS {
 			'general_background_color' => 'body',
 			'general_font_family'      => 'body',
 			'general_font_size'        => 'body',
+			'general_font_weight'      => 'body',
+			'general_line_height'      => 'body',
+			'general_letter_spacing'   => 'body',
 		);
 
 		return isset( $map[ $option_key ] ) ? $map[ $option_key ] : '';
