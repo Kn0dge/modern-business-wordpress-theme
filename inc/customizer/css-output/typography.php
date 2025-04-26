@@ -37,7 +37,16 @@ class Modern_Business_Typography_CSS {
 
 		foreach ( $options as $section_key => $section_options ) {
 			if ( isset( $section_options['options'] ) ) {
-				$section_css = $this->get_css_data( $section_options['options'], $section_key );
+				if ( $section_key === 'modern_business_contact_section_options' ) {
+					// Exclude subtitle options for contact section
+					$filtered_options = array_filter($section_options['options'], function($key) {
+						 return strpos($key, 'subtitle') === false;
+					}, ARRAY_FILTER_USE_KEY);
+					$section_css = $this->get_css_data( $filtered_options, $section_key );
+			  } else {
+					$section_css = $this->get_css_data( $section_options['options'], $section_key );
+			  }
+			  
 				if ( ! empty( $section_css ) ) {
 					$css .= $section_css;
 				}

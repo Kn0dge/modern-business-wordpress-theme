@@ -476,7 +476,7 @@
     wp.customize('contact_text_align', function(value) {
         value.bind(function(newval) {
             $('.contact-section').css('text-align', newval);
-            $('.contact-section .section-subtitle').css('text-align', newval);
+            $('.contact-section').css('text-align', newval);
         });
     });
 
