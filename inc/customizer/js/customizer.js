@@ -19,6 +19,30 @@
         });
     });
 
+    // General Settings - Colors
+    wp.customize('general_text_color', function(value) {
+        value.bind(function(newval) {
+            $('body').css('color', newval);
+        });
+    });
+    wp.customize('general_background_color', function(value) {
+        value.bind(function(newval) {
+            $('body').css('background-color', newval);
+        });
+    });
+
+    // General Settings - Typography
+    wp.customize('general_font_family', function(value) {
+        value.bind(function(newval) {
+            $('body').css('font-family', newval);
+        });
+    });
+    wp.customize('general_font_size', function(value) {
+        value.bind(function(newval) {
+            $('body').css('font-size', newval + 'px');
+        });
+    });
+
     // Hero Section
     wp.customize('enable_hero_section', function(value) {
         value.bind(function(newval) {

@@ -61,9 +61,14 @@ class Modern_Business_Typography_CSS {
 		$path = get_template_directory() . '/inc/customizer/options/sections.php';
 		if ( file_exists( $path ) ) {
 			$options_data = include $path;
+			$options = [];
 			if ( isset( $options_data['modern_business_sections_panel'] ) ) {
-				return $options_data['modern_business_sections_panel']['options'];
+				$options = array_merge( $options, $options_data['modern_business_sections_panel']['options'] );
 			}
+			if ( isset( $options_data['modern_business_general_settings_panel'] ) ) {
+				$options = array_merge( $options, $options_data['modern_business_general_settings_panel']['options'] );
+			}
+			return $options;
 		}
 		return array();
 	}
@@ -74,7 +79,11 @@ class Modern_Business_Typography_CSS {
 		if ( is_array( $options ) ) {
 			// Check if section is enabled
 			$enable_section_key = 'enable_' . str_replace( 'modern_business_', '', $section_key );
-			$section_enabled = get_theme_mod( $enable_section_key, true );
+			$section_enabled = true;
+			// For general settings panel, no enable option, so always true
+			if ( $section_key !== 'modern_business_general_settings_panel' ) {
+				$section_enabled = get_theme_mod( $enable_section_key, true );
+			}
 
 			if ( ! $section_enabled ) {
 				return ''; // Skip CSS if section disabled
@@ -87,12 +96,12 @@ class Modern_Business_Typography_CSS {
 				$value = get_theme_mod( $option_key, isset( $option_data['default'] ) ? $option_data['default'] : '' );
 
 				// Handle font size
-				if ( isset( $option_data['type'] ) && $option_data['type'] === 'text' && strpos( $option_key, 'font_size' ) !== false ) {
+				if ( isset( $option_data['type'] ) && ( $option_data['type'] === 'text' || $option_data['type'] === 'number' ) && strpos( $option_key, 'font_size' ) !== false ) {
 					$enable_key = 'enable_' . $option_key;
 					if ( get_theme_mod( $enable_key, true ) ) {
 						$selector = $this->get_selector_for_option( $option_key );
 						if ( ! empty( $value ) && ! empty( $selector ) ) {
-							$css .= $selector . '{ font-size: ' . esc_attr( $value ) . '; }';
+							$css .= $selector . '{ font-size: ' . esc_attr( $value ) . ( is_numeric( $value ) ? 'px' : '' ) . '; }';
 						}
 					}
 				}
@@ -185,6 +194,11 @@ class Modern_Business_Typography_CSS {
 			// About Section
 			'about_text_color'       => '.about-section',
 			'about_background_color' => '.about-section',
+			// General Settings
+			'general_text_color'       => 'body',
+			'general_background_color' => 'body',
+			'general_font_family'      => 'body',
+			'general_font_size'        => 'body',
 		);
 
 		return isset( $map[ $option_key ] ) ? $map[ $option_key ] : '';

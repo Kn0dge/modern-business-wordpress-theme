@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * @global __
  * @global get_theme_mod
@@ -329,8 +329,7 @@ $options = [
 						],
 					],
 			// Services Section
-
-'modern_business_services_section_options' => [
+					'modern_business_services_section_options' => [
 						'type'     => 'section',
 						'title'    => __( 'Services Section Options', 'modern-business' ),
 						'priority' => 40,
@@ -518,7 +517,7 @@ $options = [
 						],
 					],
 			// Team Section
-'modern_business_team_section_options' => [
+					'modern_business_team_section_options' => [
 						'type'     => 'section',
 						'title'    => __( 'Team Section Options', 'modern-business' ),
 						'priority' => 60,
@@ -765,33 +764,33 @@ $options = [
 								'priority'          => 3,
 							],
 							'contact_phone' => [
-'type'              => 'text',
-'label'             => __( 'Phone Number', 'modern-business' ),
-'default'           => '(123) 456-7890',
-'sanitize_callback' => 'sanitize_text_field',
-'priority'          => 4,
-],
-'contact_email' => [
-'type'              => 'text',
-'label'             => __( 'Email Address', 'modern-business' ),
-'default'           => 'info@example.com',
-'sanitize_callback' => 'sanitize_email',
-'priority'          => 5,
-],
-'contact_address' => [
-'type'              => 'textarea',
-'label'             => __( 'Physical Address', 'modern-business' ),
-'default'           => '123 Main St, City, Country',
-'sanitize_callback' => 'sanitize_textarea_field',
-'priority'          => 6,
-],
-							'contact_form_shortcode' => [
-'type'              => 'text',
-'label'             => __( 'Contact Form Shortcode', 'modern-business' ),
-'default'           => '',
-'sanitize_callback' => 'sanitize_text_field',
-'priority'          => 7,
-],
+								'type'              => 'text',
+								'label'             => __( 'Phone Number', 'modern-business' ),
+								'default'           => '(123) 456-7890',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 4,
+								],
+								'contact_email' => [
+								'type'              => 'text',
+								'label'             => __( 'Email Address', 'modern-business' ),
+								'default'           => 'info@example.com',
+								'sanitize_callback' => 'sanitize_email',
+								'priority'          => 5,
+								],
+								'contact_address' => [
+								'type'              => 'textarea',
+								'label'             => __( 'Physical Address', 'modern-business' ),
+								'default'           => '123 Main St, City, Country',
+								'sanitize_callback' => 'sanitize_textarea_field',
+								'priority'          => 6,
+								],
+															'contact_form_shortcode' => [
+								'type'              => 'text',
+								'label'             => __( 'Contact Form Shortcode', 'modern-business' ),
+								'default'           => '',
+								'sanitize_callback' => 'sanitize_text_field',
+								'priority'          => 7,
+								],
 
 							'contact_bg_color' => [
 								'type'              => 'color',
@@ -830,6 +829,80 @@ $options = [
 					],
 				],
 			],
+			'modern_business_general_settings_panel' => [
+				'type'     => 'panel',
+				'title'    => __( 'General Settings', 'modern-business' ),
+				'priority' => 20,
+				'options'  => [
+					'general_colors_section' => [
+							'type'     => 'section',
+							'title'    => __( 'Colors', 'modern-business' ),
+							'priority' => 10,
+							'options'  => [
+								'general_text_color' => [
+									'type'              => 'color',
+									'control_type'      => 'color',
+									'label'             => __( 'General Text Color', 'modern-business' ),
+									'default'           => '#000000',
+									'sanitize_callback' => 'sanitize_hex_color',
+									'priority'          => 1,
+								],
+								'general_background_color' => [
+									'type'              => 'color',
+									'control_type'      => 'color',
+									'label'             => __( 'General Background Color', 'modern-business' ),
+									'default'           => '#ffffff',
+									'sanitize_callback' => 'sanitize_hex_color',
+									'priority'          => 2,
+								],
+							],
+					],
+					'general_typography_section' => [
+							'type'     => 'section',
+							'title'    => __( 'Typography', 'modern-business' ),
+							'priority' => 20,
+							'options'  => [
+'general_font_family' => [
+	'type'              => 'select',
+	'control_type'      => 'select',
+	'label'             => __( 'General Font Family', 'modern-business' ),
+	'default'           => 'Arial, sans-serif',
+	'sanitize_callback' => 'sanitize_text_field',
+	'priority'          => 1,
+	'choices'           => [
+		'Arial, sans-serif'           => 'Arial',
+		'Helvetica, sans-serif'       => 'Helvetica',
+		'"Times New Roman", serif'    => 'Times New Roman',
+		'Georgia, serif'              => 'Georgia',
+		'Verdana, sans-serif'         => 'Verdana',
+		'"Courier New", monospace'    => 'Courier New',
+		'"Lucida Console", monospace' => 'Lucida Console',
+		'Roboto, sans-serif'          => 'Roboto',
+		'Open Sans, sans-serif'       => 'Open Sans',
+		'Lato, sans-serif'            => 'Lato',
+		'Montserrat, sans-serif'      => 'Montserrat',
+		'Oswald, sans-serif'          => 'Oswald',
+		'Source Sans Pro, sans-serif' => 'Source Sans Pro',
+		'Raleway, sans-serif'         => 'Raleway',
+		'Merriweather, serif'         => 'Merriweather',
+	],
+],
+								'general_font_size' => [
+									'type'              => 'number',
+									'label'             => __( 'General Font Size (px)', 'modern-business' ),
+									'default'           => 16,
+									'sanitize_callback' => 'absint',
+									'priority'          => 2,
+									'input_attrs'       => [
+											'min' => 10,
+											'max' => 50,
+									],
+								],
+							],
+        ],
+    ],
+],
+
 		],
 	],
 ];
