@@ -35,10 +35,15 @@
                 ?>
             </div><!-- .site-logo -->
 
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                <span class="screen-reader-text"><?php esc_html_e('Menu', 'modern-business'); ?></span>
-                <span class="menu-icon"></span>
+            <?php if ( get_theme_mod( 'enable_mobile_menu', true ) ) : ?>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle menu', 'modern-business'); ?> '">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <rect y="4" width="24" height="2" fill="currentColor"/>
+                    <rect y="11" width="24" height="2" fill="currentColor"/>
+                    <rect y="18" width="24" height="2" fill="currentColor"/>
+                </svg>
             </button>
+            <?php endif; ?>
 
             <nav id="site-navigation" class="main-navigation">
                 <?php

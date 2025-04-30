@@ -131,6 +131,13 @@ function modern_business_customize_register( $wp_customize ) {
         }
     }
 
+    // Register nav_menu_locations setting for selective refresh
+    $wp_customize->add_setting( 'nav_menu_locations[primary]', array(
+        'default'           => '',
+        'sanitize_callback' => 'absint',
+        'transport'         => 'postMessage',
+    ) );
+
     //Blog Section
     if ( isset( $wp_customize->selective_refresh ) ) {
         $wp_customize->selective_refresh->add_partial( 'enable_blog_section', array(
@@ -151,8 +158,23 @@ function modern_business_customize_register( $wp_customize ) {
         return get_theme_mod( 'blog_subtitle', __( 'Read our latest articles and news', 'modern-business' ) );
         },
         ) );
-        // Add more partials as needed for other blog options
-        }
+
+        // Add selective refresh for primary menu
+        $wp_customize->selective_refresh->add_partial( 'primary_menu', array(
+            'selector'        => '#site-navigation',
+            'render_callback' => function() {
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'primary',
+                        'menu_id'        => 'primary-menu',
+                        'menu_class'     => 'main-menu',
+                        'container'      => false,
+                        'walker'         => new Modern_Business_Menu_Walker(),
+                    )
+                );
+            },
+        ) );
+    }
 }
 
 add_action( 'customize_register', 'modern_business_customize_register' );
